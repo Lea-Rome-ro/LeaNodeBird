@@ -5,6 +5,7 @@ import { Card, Popover, Button, Avatar, List, Comment } from 'antd';
 import { RetweetOutlined, HeartOutlined, MessageOutlined, EllipsisOutlined, HeartTwoTone } from '@ant-design/icons';
 import PostImages from './PostImages';
 import CommentForm from './CommentForm';
+import PostCardContent from './PostCardContent';
 
 
 const PostCard = ({post}) => {
@@ -18,7 +19,7 @@ const PostCard = ({post}) => {
         },[]);
     const id = useSelector((state)=> state.user.me?.id);
     return (
-        <div style={{ marginBotton: 20 }}>
+        <div style={{ marginButton: 20 }}>
             <Card
                 cover={post.Images[0] && <PostImages images={post.Images} />}
                 actions={[
@@ -44,7 +45,7 @@ const PostCard = ({post}) => {
             <Card.Meta
                 avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
                 title={post.User.nickname}
-                description={post.content}
+                description={<PostCardContent postData={post.content} />}
             />
             </Card>
             {commentFormOpened && (
